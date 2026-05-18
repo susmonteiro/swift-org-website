@@ -1116,6 +1116,15 @@ in order for a C++ container type to automatically conform to
   dereference it using `operator *` in C++.
 - The C++ iterator type must be comparable using `operator ==`.
 
+### More efficient ways to iterate through C++ containers
+
+Most C++ containers conform to [BorrowingSequence](TODO), which allows iterating over them without making any implicit copies. 
+This is more efficient than relying on the conformance to `Sequence`.
+
+Only containers that conform to `BorrowingSequence` but not to `Sequence` currently use the more efficient iteration.
+
+This is currently an experimental feature and can be enabled by passing `-enable-experimental-feature BorrowingForLoop` to the compiler invocation.
+
 ### Using Associative Container C++ Types in Swift
 
 Associative C++ container types, like `std::map`, provide efficient access
